@@ -16,23 +16,28 @@ class User:
         print(self.age)
         print(self.is_rewards_member)
         print(self.gold_card_points)
+        print('\n')
         return self
 
     def enroll(self):
         if self.is_rewards_member == False:
             self.is_rewards_member = True
             self.gold_card_points += 200
-            print(f"You've earned 200 points for enrolling! Your new balance is {self.gold_card_points} points!")
+            print(f"{self.first_name}, You've earned 200 points for enrolling! Your new balance is {self.gold_card_points} points!")
+            print('\n')
         else:
-            print(f'You are already a rewards member!')
+            print(f"{self.first_name}, You are already a rewards member!")
+            print('\n')
         return self
 
     def spend_points(self, points_spent):
         if points_spent <= self.gold_card_points:
             self.gold_card_points -= points_spent
-            print(f'You spent {points_spent} points! You have {self.gold_card_points} points remaining!')
+            print(f"{self.first_name}, You've spent {points_spent} points! You have {self.gold_card_points} points remaining!")
+            print('\n')
         else:
-            print('Not enough points!')
+            print(f"{self.first_name}, You don't have enough points!")
+            print('\n')
         return self
 
 
@@ -42,13 +47,10 @@ matt = User('Matt', 'Moldovan', 'matthewmoldovan@outlook.com', 24)
 jane = User('Jane', 'Doe', 'jane.doe@gmail.com', 32)
 john = User('John', 'Doe', 'johndoeisthecoolest@aol.com', 28)
 
-matt.display_info()
-matt.enroll()
-matt.spend_points(50)
-jane.enroll()
-jane.spend_points(80)
-matt.display_info()
-jane.display_info()
-john.display_info()
-matt.enroll()
-john.spend_points(40)
+
+
+
+matt.display_info().enroll().spend_points(50).display_info().enroll()
+jane.enroll().spend_points(80).display_info()
+john.display_info().spend_points(40)
+
